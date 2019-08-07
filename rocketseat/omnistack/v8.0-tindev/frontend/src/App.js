@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
 
+import logo from "./assets/logo.svg";
+
 function App() {
-  return <h1>Hello, World!</h1>;
+  return <img src={logo} alt="Tindev logo" />;
 }
 
 export default App;
