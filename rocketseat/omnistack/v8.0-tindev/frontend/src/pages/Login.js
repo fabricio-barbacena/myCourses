@@ -7,7 +7,11 @@ import { isContainer } from "postcss-selector-parser";
 export default function Login() {
   return (
     <div className="login-container">
-      <img src={logo} alt="Tindev logo" />
+      <form>
+        <img src={logo} alt="Tindev logo" />
+        <input placeholder="type your Github username" />
+        <button type="submit">Log in</button>
+      </form>
     </div>
   );
 }
