@@ -8,10 +8,14 @@ import logo from "../assets/logo.svg";
 export default function Login({ history }) {
   const [username, setUsername] = useState("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(username);
+    const response = await api.post("/devs", {
+      username
+    });
+
+    console.log(response);
 
     history.push("/main");
   }
