@@ -7,7 +7,7 @@ import Main from "./pages/Main";
 export default function Routes() {
   return (
     <BrowserRouter>
-      <Route path="/" component={Login} />
+      <Route path="/" exact component={Login} />
       <Route path="/main" component={Main} />
     </BrowserRouter>
   );
