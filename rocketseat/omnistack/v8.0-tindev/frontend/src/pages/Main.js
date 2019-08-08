@@ -29,7 +29,9 @@ export default function Main({ match }) {
   }
 
   async function handleDislike(id) {
-    console.log("dislike", id);
+    await api.post(`/devs/${id}/dislikes`, null, {
+      headers: { user: match.params.id }
+    });
   }
 
   return (
