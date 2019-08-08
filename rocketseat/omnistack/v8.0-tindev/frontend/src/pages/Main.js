@@ -1,4 +1,5 @@
 import React from "react";
+import "./Main.css";
 
 import logo from "../assets/logo.svg";
 import like from "../assets/like.svg";
@@ -16,7 +17,7 @@ export default function Main({ match }) {
           />
           <footer>
             <strong>Filipe Deschamps</strong>
-            <p>Programador e cantor sertanejo nas horas vagas</p>
+            <p>Programador e cantor sertanejo nas horas vagas </p>
           </footer>
 
           <div className="buttons">
