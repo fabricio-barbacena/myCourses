@@ -39,26 +39,30 @@ export default function Main({ match }) {
   return (
     <div className="main-container">
       <img src={logo} alt="Tindev logo" />
-      <ul>
-        {users.map(user => (
-          <li key={user._id}>
-            <img src={user.avatar} alt={user.name} />
-            <footer>
-              <strong>{user.name}</strong>
-              <p>{user.bio}</p>
-            </footer>
+      {users.length > 0 ? (
+        <ul>
+          {users.map(user => (
+            <li key={user._id}>
+              <img src={user.avatar} alt={user.name} />
+              <footer>
+                <strong>{user.name}</strong>
+                <p>{user.bio}</p>
+              </footer>
 
-            <div className="buttons">
-              <button type="button" onClick={() => handleDislike(user._id)}>
-                <img src={dislike} alt="dislike" />
-              </button>
-              <button type="button" onClick={() => handleLike(user._id)}>
-                <img src={like} alt="like" />
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+              <div className="buttons">
+                <button type="button" onClick={() => handleDislike(user._id)}>
+                  <img src={dislike} alt="dislike" />
+                </button>
+                <button type="button" onClick={() => handleLike(user._id)}>
+                  <img src={like} alt="like" />
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="empty">Acabou :-(</div>
+      )}
     </div>
   );
 }
