@@ -24,12 +24,20 @@ export default function Main({ match }) {
     loadUsers();
   }, [match.params.id]);
 
+  async function handleLike(id) {
+    console.log("like", id);
+  }
+
+  async function handleDislike(id) {
+    console.log("dislike", id);
+  }
+
   return (
     <div className="main-container">
       <img src={logo} alt="Tindev logo" />
       <ul>
         {users.map(user => (
-          <li>
+          <li key={user._id}>
             <img src={user.avatar} alt={user.name} />
             <footer>
               <strong>{user.name}</strong>
@@ -37,10 +45,10 @@ export default function Main({ match }) {
             </footer>
 
             <div className="buttons">
-              <button type="button">
+              <button type="button" onClick={() => handleDislike(user._id)}>
                 <img src={dislike} alt="dislike" />
               </button>
-              <button type="button">
+              <button type="button" onClick={() => handleLike(user._id)}>
                 <img src={like} alt="like" />
               </button>
             </div>
