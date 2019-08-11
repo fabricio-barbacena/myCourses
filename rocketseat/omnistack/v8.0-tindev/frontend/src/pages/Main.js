@@ -29,6 +29,10 @@ export default function Main({ match }) {
   useEffect(() => {
     const socket = io("http://localhost:3333");
 
+    socket.on("world", message => {
+      console.log(message);
+    });
+
     setTimeout(() => {
       socket.emit("hello", {
         message: "Hello, World!"
