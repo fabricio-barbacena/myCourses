@@ -27,17 +27,9 @@ export default function Main({ match }) {
   }, [match.params.id]);
 
   useEffect(() => {
-    const socket = io("http://localhost:3333");
-
-    socket.on("world", message => {
-      console.log(message);
+    const socket = io("http://localhost:3333", {
+      query: { user: match.params.id }
     });
-
-    setTimeout(() => {
-      socket.emit("hello", {
-        message: "Hello, World!"
-      });
-    }, 3000);
   }, [match.params.id]);
 
   async function handleLike(id) {
