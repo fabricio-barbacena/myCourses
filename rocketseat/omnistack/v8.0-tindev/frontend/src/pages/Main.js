@@ -12,7 +12,7 @@ import itsamatch from "../assets/itsamatch.png";
 
 export default function Main({ match }) {
   const [users, setUsers] = useState([]);
-  const [matchDev, setMatchDev] = useState(true);
+  const [matchDev, setMatchDev] = useState(null);
 
   useEffect(() => {
     async function loadUsers() {
@@ -88,8 +88,8 @@ export default function Main({ match }) {
         <div className="match-container">
           <img src={itsamatch} alt="It's a match  " />
           <img className="avatar" src={matchDev.avatar} alt="avatar" />
-          <strong>matchDev.name</strong>
-          <p>matchDev.bio</p>
+          <strong>{matchDev.name}</strong>
+          <p>{matchDev.bio}</p>
 
           <button type="button" onClick={() => setMatchDev(null)}>
             FECHAR
