@@ -34,7 +34,7 @@ export default function Main({ match }) {
     });
 
     socket.on("match", dev => {
-      console.log(dev);
+      setMatchDev(dev);
     });
   }, [match.params.id]);
 
@@ -87,13 +87,9 @@ export default function Main({ match }) {
       {matchDev && (
         <div className="match-container">
           <img src={itsamatch} alt="It's a match  " />
-          <img
-            className="avatar"
-            src="https://avatars2.githubusercontent.com/u/2254731?v=4"
-            alt="avatar"
-          />
-          <strong>Diego Fernandes</strong>
-          <p>CTO na @Rocketseat</p>
+          <img className="avatar" src={matchDev.avatar} alt="avatar" />
+          <strong>matchDev.name</strong>
+          <p>matchDev.bio</p>
 
           <button type="button" onClick={() => setMatchDev(null)}>
             FECHAR
