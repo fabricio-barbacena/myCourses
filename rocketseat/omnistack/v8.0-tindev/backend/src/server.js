@@ -10,6 +10,10 @@ const io = require("socket.io")(server);
 
 io.on("connection", socket => {
   console.log("New connection", socket.id);
+
+  socket.on("hello", message => {
+    console.log(message);
+  });
 });
 
 mongoose.connect(
