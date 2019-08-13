@@ -32,9 +32,13 @@ function checkUserExists(req, res, next) {
 
 // local middleware to see if there is an user in the array with that index
 function checkUserInArray(req, res, next) {
-  if (!users[req.params.index]) {
+  const user = users[req.params.index];
+
+  if (!user) {
     return res.status(400).json({ error: "User does not exist" });
   }
+
+  req.user = user;
 
   return next();
 }
@@ -68,8 +72,7 @@ server.get("/users", (req, res) => {
 });
 
 server.get("/users/:index", checkUserInArray, (req, res) => {
-  const { index } = req.params;
-  return res.json({ user: `${users[index]}` });
+  return res.json({ user: `${req.user}` });
 });
 
 server.post("/users", checkUserExists, (req, res) => {
