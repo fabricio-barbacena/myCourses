@@ -5,6 +5,22 @@ server.use(express.json());
 
 const users = ["Diego", "Claudio", "Victor"];
 
+// Example of global middleware
+server.use((req, res, next) => {
+  console.log("A requisição foi chamada!");
+  return next();
+});
+
+// Another global middleware, with logs about the request
+server.use((req, res, next) => {
+  console.time("Request");
+  console.log(`Method: ${req.method}; URL: ${req.url}`);
+
+  next();
+
+  console.timeEnd("Request");
+});
+
 // get route returning message
 server.get("/text", (req, res) => {
   return res.send("Hello, World!");
