@@ -21,6 +21,24 @@ server.use((req, res, next) => {
   console.timeEnd("Request");
 });
 
+// local middleware to check if the body is sendind the username information
+function checkUserExists(req, res, next) {
+  if (!req.body.username) {
+    return res.status(400).json({ error: "Username is required" });
+  }
+
+  return next();
+}
+
+// local middleware to see if there is an user in the array with that index
+function checkUserInArray(req, res, next) {
+  if (!users[req.params.index]) {
+    return res.status(400).json({ error: "User does not exist" });
+  }
+
+  return next();
+}
+
 // get route returning message
 server.get("/text", (req, res) => {
   return res.send("Hello, World!");
@@ -49,25 +67,25 @@ server.get("/users", (req, res) => {
   return res.json({ users });
 });
 
-server.get("/users/:index", (req, res) => {
+server.get("/users/:index", checkUserInArray, (req, res) => {
   const { index } = req.params;
   return res.json({ user: `${users[index]}` });
 });
 
-server.post("/users", (req, res) => {
+server.post("/users", checkUserExists, (req, res) => {
   const { username } = req.body;
   users.push(username);
   return res.json(users);
 });
 
-server.put("/users/:index", (req, res) => {
+server.put("/users/:index", checkUserExists, checkUserInArray, (req, res) => {
   const { index } = req.params;
   const { username } = req.body;
   users[index] = username;
   return res.json(users);
 });
 
-server.delete("/users/:index", (req, res) => {
+server.delete("/users/:index", checkUserInArray, (req, res) => {
   const { index } = req.params;
   users.splice(index, 1);
   return res.json(users);
