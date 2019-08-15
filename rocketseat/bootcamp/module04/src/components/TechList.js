@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 
 class TechList extends Component {
+  state = {
+    techs: ["Node.js", "ReactJS", "React Native"]
+  };
+
   render() {
+    console.log(this.state); // shows in the browser console
+
     return (
       <ul>
         <li>Node.js</li>
