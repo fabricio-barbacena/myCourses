@@ -7,12 +7,13 @@ class TechList extends Component {
   };
 
   handleInputChange = e => {
-    console.log(e.target.value);
+    this.setState({ newTech: e.target.value });
   };
 
   render() {
     return (
       <>
+        <h1>{this.state.newTech}</h1>
         <ul>
           {this.state.techs.map(tech => (
             <li key={tech}>{tech}</li>
