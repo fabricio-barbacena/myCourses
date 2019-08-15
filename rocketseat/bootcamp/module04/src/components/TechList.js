@@ -6,13 +6,11 @@ class TechList extends Component {
   };
 
   render() {
-    console.log(this.state); // shows in the browser console
-
     return (
       <ul>
-        <li>Node.js</li>
-        <li>ReactJS</li>
-        <li>React Native</li>
+        {this.state.techs.map(tech => (
+          <li key={tech}>{tech}</li>
+        ))}
       </ul>
     );
   }
