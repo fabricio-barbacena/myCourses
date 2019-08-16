@@ -8,12 +8,26 @@ class TechList extends Component {
     tech: "Hidden"
   };
 
-  // static PropTypes = {}
+  static PropTypes = {};
 
   state = {
     newTech: "",
-    techs: ["Node.js", "ReactJS", "React Native"]
+    techs: []
   };
+
+  // Executed when the component show up on the screen
+  //componentDidMount() {}
+
+  // Executed whenever there is any props or state change.
+  // Parameters: prevProps, prevState
+  componentDidUpdate(_, prevState) {
+    if (prevState.techs !== this.state.techs) {
+      localStorage.setItem("techs", JSON.stringify(this.state.techs));
+    }
+  }
+
+  // Executed when the component will be deleted
+  //componentWillMount() {}
 
   handleInputChange = e => {
     this.setState({ newTech: e.target.value });
@@ -43,7 +57,6 @@ class TechList extends Component {
               onDelete={() => this.handleDelete(tech)}
             />
           ))}
-          <TechItem />
         </ul>
         <input
           type="text"

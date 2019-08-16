@@ -16,7 +16,7 @@ TechItem.defaultProps = {
   tech: "Hidden"
 };
 
-TechItems.PropTypes = {
+TechItem.PropTypes = {
   tech: PropTypes.string,
   onDelete: PropTypes.func.isRequired
 };
