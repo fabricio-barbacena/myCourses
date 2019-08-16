@@ -20,7 +20,7 @@ class TechList extends Component {
   };
 
   handleDelete = tech => {
-    console.log(tech);
+    this.setState({ techs: this.state.techs.filter(t => t !== tech) });
   };
 
   render() {
