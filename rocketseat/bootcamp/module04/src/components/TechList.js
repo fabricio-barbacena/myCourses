@@ -16,7 +16,13 @@ class TechList extends Component {
   };
 
   // Executed when the component show up on the screen
-  //componentDidMount() {}
+  componentDidMount() {
+    const techs = localStorage.getItem("techs");
+
+    if (techs) {
+      this.setState({ techs: JSON.parse(techs) });
+    }
+  }
 
   // Executed whenever there is any props or state change.
   // Parameters: prevProps, prevState
