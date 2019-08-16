@@ -31,3 +31,4 @@ module.exports = {
     ]
   }
 };
+// Comment added to git branches and merge tests.
