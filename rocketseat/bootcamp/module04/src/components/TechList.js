@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+// import PropTypes from 'prop-types'
 
 import TechItem from "./TechItem";
 
 class TechList extends Component {
-  TechItem.defaultProps = {
+  static defaultProps = {
     tech: "Hidden"
   };
-  
+
+  // static PropTypes = {}
+
   state = {
     newTech: "",
     techs: ["Node.js", "ReactJS", "React Native"]
