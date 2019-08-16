@@ -11,4 +11,8 @@ function TechItem(props) {
   );
 }
 
+TechItem.defaultProps = {
+  tech: "Hidden"
+};
+
 export default TechItem;
