@@ -3,6 +3,10 @@ import React, { Component } from "react";
 import TechItem from "./TechItem";
 
 class TechList extends Component {
+  TechItem.defaultProps = {
+    tech: "Hidden"
+  };
+  
   state = {
     newTech: "",
     techs: ["Node.js", "ReactJS", "React Native"]
