@@ -10,4 +10,8 @@ app.get("/users", (req, res) => {
   return res.json({ user: req.query.user });
 });
 
+app.get("/users/:id", (req, res) => {
+  return res.json({ userId: req.params.id });
+});
+
 app.listen(3333);
